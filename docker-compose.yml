@@ -1,0 +1,17 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./styles.css:/usr/share/nginx/html/styles.css
+      - ./script.js:/usr/share/nginx/html/script.js
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Set the CPU limit to 0.5 (50% of a single CPU core)
+          memory: 256M # Set the memory limit to 256MB
